@@ -35,15 +35,15 @@ class Person(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length = 200)
     # through fields to tell django that these fields are the endpoints of the relationship
-    persons = models.ManyToManyField(Person, through='GroupRelation')
+    persons = models.ManyToManyField(Person)
 
     def __str__ (self):
         return self.name
 
-class GroupRelation(models.Model):
-    person = models.ForeignKey(Person, on_delete = models.CASCADE)
-    group = models.ForeignKey(Group, on_delete = models.CASCADE)
-    t = models.CharField(max_length = 100)
+# class GroupRelation(models.Model):
+#     person = models.ForeignKey(Person, on_delete = models.CASCADE)
+#     group = models.ForeignKey(Group, on_delete = models.CASCADE)
+#     t = models.CharField(max_length = 100)
 
 
 class Pizza(models.Model):
