@@ -1,0 +1,46 @@
+Aggregate, Annotate, F object
+
+In [100]: from django.db.models import Count
+
+In [101]: Author.objects.count()
+Out[101]: 4
+
+In [102]: Author.objects.aggregate(Count('score'))
+Out[102]: {'score__count': 4}
+
+In [103]: from django.db.models import Sum
+
+In [104]: Author.objects.aggregate(Sum('score'))
+Out[104]: {'score__sum': 28}
+
+In [105]: a = Author.objects.aggregate(Sum('score'))
+
+In [106]: print(a)
+{'score__sum': 28}
+
+In [112]: Entry.objects.annotate(author_score_sum = Sum('author__score'))[4].author_score_sum
+Out[112]: 8
+
+In [113]: from django.db.models import Avg
+
+In [114]: Entry.objects.annotate(author_score_sum = Avg('author__score'))[4].author_score_sum
+Out[114]: 4.0
+
+In [115]: jatin = Author.objects.all()[0]
+
+In [116]: jatin
+Out[116]: <Author: Jatin>
+
+In [117]: jatin.score
+Out[117]: 3
+
+In [118]: jatin.score = 4
+
+In [119]: jatin.save()
+
+In [120]: from django.db.models import F
+
+In [121]: jatin.score = F('score') + 1
+
+In [122]: jatin.save()
+
