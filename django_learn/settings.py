@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'model_learn.apps.ModelLearnConfig',
     'query_learn.apps.QueryLearnConfig',
+    'view_learn.apps.ViewLearnConfig',
+    'generic_view_learn.apps.GenericViewLearnConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +47,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'django_learn.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'generic_view_learn/generic_templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
