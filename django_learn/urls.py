@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('login_learn/', include('login_learn.urls')),
     path('form/', include('form_learn.urls')),
     path('generic/', include('generic_view_learn.urls')),
     path('query/', include('query_learn.urls')),

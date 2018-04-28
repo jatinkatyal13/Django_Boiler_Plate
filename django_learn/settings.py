@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'query_learn.apps.QueryLearnConfig',
     'view_learn.apps.ViewLearnConfig',
     'form_learn.apps.FormLearnConfig',
+    'login_learn',
     'generic_view_learn.apps.GenericViewLearnConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'django_learn.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'generic_view_learn/generic_templates'), os.path.join(BASE_DIR, 'form_learn/templates/form_learn')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'generic_view_learn/generic_templates'), os.path.join(BASE_DIR, 'form_learn/templates/form_learn'), os.path.join(BASE_DIR, 'login_learn/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +124,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL = '/login_learn/login'
+
+STATICFILES_DIR = (
+    os.path.join(BASE_DIR, 'login_learn/static/')
+)
+
+STATIC_ROOT = 'staticfiles'
